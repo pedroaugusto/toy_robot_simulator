@@ -1,5 +1,6 @@
 require "toy_robot_simulator/version"
 
 module ToyRobotSimulator
-  # Your code goes here...
+  autoload :Board, 'toy_robot_simulator/board'
+  autoload :Robot, 'toy_robot_simulator/robot'
 end
