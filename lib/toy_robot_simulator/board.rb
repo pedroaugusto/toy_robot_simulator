@@ -14,6 +14,8 @@ module ToyRobotSimulator
     def valid_position?(x, y)
       x.is_a?(Integer) &&
       y.is_a?(Integer) &&
+      x >= 0           &&
+      y >= 0           &&
       !@matrix.dig(x, y).nil?
     end
 
