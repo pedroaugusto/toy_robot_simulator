@@ -2,7 +2,7 @@ module ToyRobotSimulator
   module CommandInput
     class FileCommandInput
 
-      PLACE_MATCHER = /^PLACE\s*([0-9]*),\s*([0-9]*)\s*,\s*(NORTH|SOUTH|EAST|WEST)\s*$/.freeze
+      PLACE_MATCHER = /^PLACE\s*([0-9]*)\s*,\s*([0-9]*)\s*,\s*(NORTH|SOUTH|EAST|WEST)$/.freeze
       PARAMETERLESS_COMMANDS = %w(MOVE REPORT LEFT RIGHT).freeze
 
       def initialize(file_name:,
