@@ -1,41 +1,65 @@
 # ToyRobotSimulator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/toy_robot_simulator`. To experiment with that code, run `bin/console` for an interactive prompt.
+This Gem simulates the behaviour of a toy robot over a matrix board. It provides commands to move the robot avoiding it
+to get out of the board.
 
-TODO: Delete this and the text above, and describe your gem
+## Setup
+
+- Ruby-2.4.1
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'toy_robot_simulator'
+gem 'toy_robot_simulator', :git => 'git@bitbucket.org:pedroaugustosb/toy_robot_simulator.git'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install toy_robot_simulator
-
 ## Usage
 
-TODO: Write usage instructions here
+### Running commands from file
 
-## Development
+Please check the **examples** folder for more information.
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Create a new `::ToyRobotSimulator::CommandInput::FileCommandInput` passing the file to the **file_name** key argument.
+Optional parameters are **width** and **height** both with 5 units as default value.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+```ruby
+ToyRobotSimulator::CommandInput::FileCommandInput.new(file_name: 'file.txt').scan
+```
 
-## Contributing
+Allowed commands in file:
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/toy_robot_simulator.
+- PLACE X,Y,F
+- MOVE
+- LEFT
+- RIGHT
+- REPORT
 
+### Using models directly:
 
-## License
+You can instanciate a **Robot** with a **Board** and execute the commands programatically.
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+```ruby
+robot = ToyRobotSimulator::Robot.new(ToyRobotSimulator::Board.new)
+
+robot.place(x: 0, y: 0, facing: 'EAST')
+robot.move
+robot.move
+robot.left
+robot.move
+robot.report # Outputs: 2,1,NORTH
+```
+
+## Tests
+
+Tests using **rspec** in spec folder. Run:
+
+```shell
+rake spec
+```
 
