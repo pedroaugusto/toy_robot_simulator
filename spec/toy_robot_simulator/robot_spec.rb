@@ -93,4 +93,49 @@ describe ToyRobotSimulator::Robot do
     end
   end
 
+  describe "right" do
+    context "when robot is placed" do
+
+      context "when the robot is facing NORTH" do
+        before do
+          robot.place(x: 0, y: 0, facing: 'NORTH' )
+          robot.right
+        end
+        it { expect(robot.instance_variable_get(:@facing)).to eq('EAST') }
+      end
+
+      context "when the robot is facing EAST" do
+        before do
+          robot.place(x: 0, y: 0, facing: 'EAST' )
+          robot.right
+        end
+        it { expect(robot.instance_variable_get(:@facing)).to eq('SOUTH') }
+      end
+
+      context "when the robot is facing SOUTH" do
+        before do
+          robot.place(x: 0, y: 0, facing: 'SOUTH' )
+          robot.right
+        end
+        it { expect(robot.instance_variable_get(:@facing)).to eq('WEST') }
+      end
+
+      context "when the robot is facing WEST" do
+        before do
+          robot.place(x: 0, y: 0, facing: 'WEST' )
+          robot.right
+        end
+        it { expect(robot.instance_variable_get(:@facing)).to eq('NORTH') }
+      end
+
+    end
+
+    context "when robot is not placed" do
+      it "do not change the robot position" do
+        robot.right
+        expect(board.current_y).to be_nil
+      end
+    end
+  end
+
 end

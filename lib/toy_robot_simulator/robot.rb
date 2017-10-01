@@ -1,5 +1,4 @@
 module ToyRobotSimulator
-
   class Robot
     DIRECTIONS = %w(NORTH EAST SOUTH WEST)
 
@@ -97,7 +96,5 @@ module ToyRobotSimulator
           @facing = DIRECTIONS[new_index]
         end
       end
-
   end
-
 end
