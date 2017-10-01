@@ -57,10 +57,38 @@ describe ToyRobotSimulator::Robot do
     end
 
     context "when robot is not placed" do
-      before { robot.place(x: -1, y: 1, facing: 'EAST' ) }
-
       it "prints a warning" do
         expect{ robot.report }.to output("Robot not placed yet.\n").to_stdout
+      end
+    end
+  end
+
+  describe "move" do
+    context "when robot is placed" do
+
+      context "when the next step would be inside board" do
+        before { robot.place(x: 0, y: 4, facing: 'SOUTH' ) }
+
+        it "change the robot position" do
+          robot.move
+          expect(board.current_y).to eq(3)
+        end
+      end
+
+      context "when the next step would be outside board" do
+        before { robot.place(x: 0, y: 4, facing: 'NORTH' ) }
+
+        it "do not change the robot position" do
+          robot.move
+          expect(board.current_y).to eq(4)
+        end
+      end
+    end
+
+    context "when robot is not placed" do
+      it "do not change the robot position" do
+        robot.move
+        expect(board.current_y).to be_nil
       end
     end
   end
