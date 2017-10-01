@@ -1,6 +1,6 @@
 module ToyRobotSimulator
   class Robot
-    DIRECTIONS = %w(NORTH EAST SOUTH WEST)
+    DIRECTIONS = %w(NORTH EAST SOUTH WEST).freeze
 
     # Istanciates a robot with the board wich it will move on
     def initialize(board)

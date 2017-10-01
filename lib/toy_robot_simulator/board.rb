@@ -1,7 +1,7 @@
 module ToyRobotSimulator
   class Board
-    DEFAULT_WIDTH  = 5
-    DEFAULT_HEIGHT = 5
+    DEFAULT_WIDTH  = 5.freeze
+    DEFAULT_HEIGHT = 5.freeze
 
     attr_reader :current_x, :current_y
 
