@@ -11,7 +11,7 @@ module ToyRobotSimulator
     # Place the robot in the specified coordinates and facing
     def place(x:, y:, facing: 'NORTH')
       if @board.valid_position?(x,y) && valid_facing?(facing)
-        @board.place(x,y)
+        @board.place(x, y)
         @facing = facing
       else
         puts "Bad position. robot not placed."
