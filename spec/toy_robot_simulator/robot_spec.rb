@@ -1,7 +1,6 @@
 require "spec_helper"
 
 describe ToyRobotSimulator::Robot do
-
   let(:board) { ToyRobotSimulator::Board.new }
   let(:robot) { ToyRobotSimulator::Robot.new(board) }
 
@@ -46,7 +45,24 @@ describe ToyRobotSimulator::Robot do
       end
 
     end
+  end
 
+  describe "report" do
+    context "when robot is placed" do
+      before { robot.place(x: 1, y: 1, facing: 'EAST' ) }
+
+      it "prints the coordinates" do
+        expect{ robot.report }.to output("1,1,EAST\n").to_stdout
+      end
+    end
+
+    context "when robot is not placed" do
+      before { robot.place(x: -1, y: 1, facing: 'EAST' ) }
+
+      it "prints a warning" do
+        expect{ robot.report }.to output("Robot not placed yet.\n").to_stdout
+      end
+    end
   end
 
 end
