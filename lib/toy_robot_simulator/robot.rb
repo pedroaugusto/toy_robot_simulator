@@ -39,12 +39,24 @@ module ToyRobotSimulator
       end
     end
 
+    # Rotates robot clockwise
+    def right
+      rotate
+    end
+
+    # Rotates robot counter clockwise
+    def left
+      rotate(false)
+    end
+
     private
 
+      # Verify if robot is placed over the board
       def placed?
         @board.current_x && @board.current_y && @facing
       end
 
+      # Checks if the facing is allowed
       def valid_facing?(facing)
         DIRECTIONS.include?(facing)
       end
@@ -67,6 +79,23 @@ module ToyRobotSimulator
         end
 
         return [x,y]
+      end
+
+      # Change the facing of robot 90 degrees due to direction
+      def rotate(clockwise=true)
+        if placed?
+          current_index = DIRECTIONS.index(@facing)
+
+          if clockwise
+            new_index = current_index + 1
+            new_index = 0 if new_index == DIRECTIONS.size
+          else
+            new_index = current_index - 1
+            new_index = 3 if new_index < 0
+          end
+
+          @facing = DIRECTIONS[new_index]
+        end
       end
 
   end

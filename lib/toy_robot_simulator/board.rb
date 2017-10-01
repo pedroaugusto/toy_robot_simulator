@@ -22,6 +22,5 @@ module ToyRobotSimulator
       @current_x = x
       @current_y = y
     end
-
   end
 end
