@@ -12,7 +12,7 @@ to get out of the board.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'toy_robot_simulator', :git => 'git@bitbucket.org:pedroaugustosb/toy_robot_simulator.git'
+gem 'toy_robot_simulator', :git => 'git@github.com:pedroaugusto/toy_robot_simulator.git'
 ```
 
 And then execute:

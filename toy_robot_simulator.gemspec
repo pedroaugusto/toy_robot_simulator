@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Simple gem that simulates toy robot}
   spec.description   = %q{Simple gem that simulates toy robot}
-  spec.homepage      = "https://bitbucket.org/pedroaugustosb/toy_robot_simulator"
+  spec.homepage      = "git@github.com:pedroaugusto/toy_robot_simulator.git"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
